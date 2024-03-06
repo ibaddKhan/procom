@@ -16,7 +16,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import MoneyIcon from "@mui/icons-material/Money";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -46,7 +49,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -85,13 +87,59 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+const DrawerContent = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClick = (text) => {
     console.log(`Clicked on ${text}`);
+    switch (text) {
+      case "Payments":
+        navigate("/Payment");
+        break;
+      case "Instant Payments":
+        navigate("/instantPayment");
+        break;
+      case "QR Scan":
+        navigate("/qrScanPayment");
+        break;
+      default:
+        break;
+    }
   };
+
+  return (
+    <List>
+      {["Payments", "Instant Payments", "QR Scan"].map((text, index) => (
+        <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          <ListItemButton
+            onClick={() => handleClick(text)}
+            sx={{
+              minHeight: 48,
+              justifyContent: theme => open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: theme => open ? 3 : "auto",
+                justifyContent: "center",
+              }}
+            >
+              {index === 0 ? <AttachMoneyIcon /> : index === 2 ? <QrCode2Icon /> : <MoneyIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} sx={{ opacity: theme => open ? 1 : 0 }} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+  );
+};
+
+export default function MiniDrawer() {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -138,31 +186,7 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {["Payments", "Instant Payments", "QR Scan"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                onClick={() => handleClick(text)}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <AttachMoneyIcon /> : <AttachMoneyIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <DrawerContent />
         <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
