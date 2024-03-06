@@ -23,8 +23,13 @@ const Routing = () => {
           <Route path="instantpayment" element={<InstantPayment />} />
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
+<<<<<<< HEAD
         <Route path="merchent" element={<Marchent />}>
           <Route path="" element={<Dashboard />} />
+=======
+        <Route path="marchent" element={<Marchent />}>
+          <Route path="dashboard" element={<Dashboard />} />
+>>>>>>> 3ab82c0a7f8ef48e305d322c56684021fcd16e77
           <Route path="customers" element={<Customers />} />
           <Route path="payments" element={<PaymentM />} />
           <Route path="paymentrequest" element={<PaymentRequest />} />
