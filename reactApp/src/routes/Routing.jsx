@@ -4,9 +4,13 @@ import Login from "../screens/Auth/Login/Login";
 import Register from "../screens/Auth/Register/Register";
 import Marchent from "../screens/marchent/Marchent";
 import Customer from "../screens/customer/Customer";
+import Customers from "../screens/marchent/customers/Customers";
 import Payment from "../screens/customer/payments/Payment";
+import PaymentM from "../screens/marchent/payment/Payment";
 import InstantPayment from "../screens/customer/InstantPayment/InstantPayment";
 import Qrscan from "../screens/customer/Qrscan/Qrscan";
+import Dashboard from "../screens/marchent/dashboard/Dashboard";
+import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
 const Routing = () => {
   return (
     <BrowserRouter>
@@ -20,8 +24,10 @@ const Routing = () => {
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
         <Route path="marchent" element={<Marchent />}>
-          <Route path="instantpayment" element={<InstantPayment />} />
-          <Route path="qrscan" element={<Qrscan />} />
+          <Route path="payments" element={<PaymentM />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="" element={<Dashboard />} />
+          <Route path="paymentrequest" element={<PaymentRequest />} />
         </Route>
       </Routes>
     </BrowserRouter>
