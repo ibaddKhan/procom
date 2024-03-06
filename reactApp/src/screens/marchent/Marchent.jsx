@@ -1,10 +1,12 @@
-import React from 'react'
-import MiniDrawer from '../../components/customers/Navbar'
+import React from "react";
+import MiniDrawer from "../../components/marchents/Navbar";
 
 const Marchent = () => {
   return (
-    <div><MiniDrawer/></div>
-  )
-}
+    <>
+      <MiniDrawer />
+    </>
+  );
+};
 
-export default Marchent
+export default Marchent;

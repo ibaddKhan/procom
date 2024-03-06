@@ -1,7 +1,12 @@
 import React from "react";
+import MiniDrawer from "../../components/customers/Navbar";
 
 const Customer = () => {
-  return <div>Customer</div>;
+  return (
+    <>
+      <MiniDrawer />
+    </>
+  );
 };
 
 export default Customer;
