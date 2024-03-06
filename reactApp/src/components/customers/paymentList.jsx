@@ -9,6 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Button from "react-bootstrap/Button";
 import { Card, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
     { id: 'accountNo', label: 'Account No', minWidth: 100 },
@@ -136,6 +137,7 @@ const rows = [
 ];
 
 export default function PaymentList() {
+    let nav = useNavigate()
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const theme = useTheme();
@@ -152,6 +154,7 @@ export default function PaymentList() {
 
     const handlePay = (row) => {
         console.log('Pay button clicked for:', row);
+        nav("Qrscan")
     };
 
     const handleReject = (row) => {
@@ -160,7 +163,11 @@ export default function PaymentList() {
 
     const handleViewDetails = (row) => {
         console.log('View Details button clicked for:', row);
+
+        localStorage.setItem('selectedRow', JSON.stringify(row))
+        nav("transactionDetails")
     };
+
     return (
         <Grid container>
             <Grid item xs={12}>
@@ -170,7 +177,7 @@ export default function PaymentList() {
                             <TableHead>
                                 <TableRow>
                                     {columns.map((column) => {
-                                        if (isMobile && ['time', 'date', 'action', 'description'].includes(column.id)) {
+                                        if (isMobile && ['time', 'date', 'action', 'accountNo', 'description'].includes(column.id)) {
                                             return null; // Hide specified columns on mobile
                                         }
                                         return (
@@ -196,7 +203,7 @@ export default function PaymentList() {
                                             key={rowIndex}
                                         >
                                             {columns.map((column) => {
-                                                if (isMobile && ['time', 'date', 'action', 'description'].includes(column.id)) {
+                                                if (isMobile && ['time', 'date', 'action', 'accountNo', 'description'].includes(column.id)) {
                                                     return null; // Hide specified columns on mobile
                                                 }
 
