@@ -5,13 +5,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -71,10 +71,10 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -83,15 +83,19 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            <Box sx={{display:'flex', justifyContent:'space-between'}}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               {/* <Grid item xs>
                   <Link href="#" variant="body2">
                     Forgot password?
                   </Link>
                 </Grid> */}
-                <Box></Box>
+              <Box></Box>
               <Box item>
-                <Link href="#" variant="body2" sx={{ textDecoration: "none" }}>
+                <Link
+                  to="/register"
+                  variant="body2"
+                  style={{ textDecoration: "none", color: "#1976d2" }}
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Box>

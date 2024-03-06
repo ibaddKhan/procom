@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
-import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -96,7 +96,7 @@ const DrawerContent = () => {
     console.log(`Clicked on ${text}`);
     switch (text) {
       case "Payments":
-        navigate("payment");
+        navigate("");
         break;
       case "Instant Payments":
         navigate("instantpayment");
@@ -176,15 +176,14 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            DASHBOARD
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <AccessibilityIcon style={{ fontSize: '2em' }} />
-          <Typography variant="h6" noWrap component="div">
-            Customer Portal
-          </Typography>
-
+        <DrawerHeader sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography sx={{ marginLeft: "15px" }}>Menu</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -193,6 +192,7 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </DrawerHeader>
+
         <Divider />
         <DrawerContent />
         <Divider />

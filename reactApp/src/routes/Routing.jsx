@@ -19,7 +19,7 @@ const Routing = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="customer" element={<Customer />}>
-          <Route path="payment" element={<Payment />} />
+          <Route path="" element={<Payment />} />
           <Route path="instantpayment" element={<InstantPayment />} />
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
