@@ -96,7 +96,7 @@ const DrawerContent = () => {
     console.log(`Clicked on ${text}`);
     switch (text) {
       case "Payments":
-        navigate("/customer");
+        navigate("payment");
         break;
       case "Instant Payments":
         navigate("instantpayment");

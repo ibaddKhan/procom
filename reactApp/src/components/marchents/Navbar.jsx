@@ -22,7 +22,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -95,6 +95,11 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+
+  // UseNavigate
+  const navigate = useNavigate();
+
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -102,6 +107,23 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  // Navigate Ma
+  const handleNavigate = (text) => {
+    
+    if (text === 'Dashboard') {
+      navigate('/marchent/dashboard')
+    }
+    else if (text === 'Payments') {
+      navigate('/marchent/payments')
+    }
+    else if (text === 'Customers') {
+      navigate('/marchent/customers')
+    }
+    else if (text === 'Payments Request') {
+      navigate('/marchent/paymentrequest')
+    }
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -168,7 +190,7 @@ export default function MiniDrawer() {
                     )}
                   </ListItemIcon>
 
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText onClick={() => handleNavigate(text)} primary={text} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             )
