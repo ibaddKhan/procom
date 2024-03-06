@@ -11,11 +11,11 @@ import InstantPayment from "../screens/customer/InstantPayment/InstantPayment";
 import Qrscan from "../screens/customer/Qrscan/Qrscan";
 import Dashboard from "../screens/marchent/dashboard/Dashboard";
 import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
+import Error404 from "../404";
 const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<>Home</>} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="customer" element={<Customer />}>
@@ -29,6 +29,7 @@ const Routing = () => {
           <Route path="" element={<Dashboard />} />
           <Route path="paymentrequest" element={<PaymentRequest />} />
         </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   );
