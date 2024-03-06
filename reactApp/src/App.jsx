@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from "react";
+import { UserContextProvider } from "./context/userContextProvider";
+import Routing from "./routes/Routing";
 
 const App = () => {
+  const [isUser, setIsUser] = useState(false);
   return (
-    <div>App</div>
-  )
-}
+    <UserContextProvider value={{ isUser, setIsUser }}>
+      <Routing />
+    </UserContextProvider>
+  );
+};
 
-export default App
+export default App;
