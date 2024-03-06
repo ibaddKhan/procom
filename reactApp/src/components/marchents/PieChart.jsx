@@ -9,31 +9,27 @@ const palette = ['red', 'blue', 'green'];
 
 export default function PieColor() {
   return (
-    <Stack direction="row" width="100%" textAlign="center" spacing={2}>
-      <Box flexGrow={1}>
-        <Typography>Default</Typography>
+    <Stack direction="row" width="100%" spacing={2}>
+
+      <Box sx={{ padding: "20px", border: "1px solid #cfcfcf", borderRadius: "5px" }}>
+        <Typography variant='h6'>Payment Status</Typography>
         <PieChart
-          series={[{ data: [{ value: 10 }, { value: 15 }, { value: 20 }] }]}
-          {...pieParams}
-        />
-      </Box>
-      <Box flexGrow={1}>
-        <Typography>Palette</Typography>
-        <PieChart
-          colors={palette}
-          series={[{ data: [{ value: 10 }, { value: 15 }, { value: 20 }] }]}
-          {...pieParams}
-        />
-      </Box>
-      <Box flexGrow={1}>
-        <Typography>Item</Typography>
-        <PieChart
+
           series={[
-            { data: [{ value: 10, color: 'orange' }, { value: 15 }, { value: 20 }] },
+            {
+              data: [
+                { value: 20, color: '#4285f4', label: 'Completed' },
+                { value: 10, color: '#ea4335', label: 'Rejected' },
+                { value: 15, color: '#fbbc05', label: 'Pending' }
+              ]
+            },
           ]}
-          {...pieParams}
+
+          width={500}
+          height={250}
         />
       </Box>
+
     </Stack>
   );
 }

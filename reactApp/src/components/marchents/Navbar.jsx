@@ -112,16 +112,16 @@ export default function MiniDrawer() {
   const handleNavigate = (text) => {
     
     if (text === 'Dashboard') {
-      navigate('/marchent/dashboard')
+      navigate('/merchant/dashboard')
     }
     else if (text === 'Payments') {
-      navigate('/marchent/payments')
+      navigate('/merchant/payments')
     }
     else if (text === 'Customers') {
-      navigate('/marchent/customers')
+      navigate('/merchant/customers')
     }
     else if (text === 'Payments Request') {
-      navigate('/marchent/paymentrequest')
+      navigate('/merchant/paymentrequest')
     }
   }
 
