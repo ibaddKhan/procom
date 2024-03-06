@@ -1,5 +1,6 @@
 import React from 'react'
 import PaymentCard from '../../../components/customers/paymentCard'
+import PaymentList from '../../../components/customers/paymentList'
 
 const Payment = () => {
   return (
@@ -23,6 +24,7 @@ const Payment = () => {
 " />
         </div>
       </div>
+      <PaymentList />
     </>
   )
 }
