@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import Button from "react-bootstrap/Button";
 import { Card, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 const columns = [
@@ -133,6 +134,7 @@ const rows = [
         action: "View"
     }
 ];
+
 export default function PaymentList() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -149,20 +151,16 @@ export default function PaymentList() {
     };
 
     const handlePay = (row) => {
-        // Add your logic for handling the "Pay" action here
         console.log('Pay button clicked for:', row);
     };
 
     const handleReject = (row) => {
-        // Add your logic for handling the "Reject" action here
         console.log('Reject button clicked for:', row);
     };
 
     const handleViewDetails = (row) => {
-        // Add your logic for handling the "View Details" action here
         console.log('View Details button clicked for:', row);
     };
-
     return (
         <Grid container>
             <Grid item xs={12}>
@@ -172,8 +170,8 @@ export default function PaymentList() {
                             <TableHead>
                                 <TableRow>
                                     {columns.map((column) => {
-                                        if (isMobile && ['date', 'time', 'description'].includes(column.id)) {
-                                            return null; // Hide the heading on mobile
+                                        if (isMobile && ['time', 'date', 'action', 'description'].includes(column.id)) {
+                                            return null; // Hide specified columns on mobile
                                         }
                                         return (
                                             <TableCell key={column.id} align="center" style={{ minWidth: column.minWidth }}>
@@ -198,27 +196,42 @@ export default function PaymentList() {
                                             key={rowIndex}
                                         >
                                             {columns.map((column) => {
-                                                const value = row[column.id];
-                                                if (isMobile && ['date', 'time', 'description'].includes(column.id)) {
-                                                    return null; // Hide the columns on mobile
+                                                if (isMobile && ['time', 'date', 'action', 'description'].includes(column.id)) {
+                                                    return null; // Hide specified columns on mobile
                                                 }
+
+                                                const value = row[column.id];
+                                                const isStatusColumn = column.id === 'status';
+
                                                 return (
-                                                    <TableCell key={column.id} align="center">
-                                                        {column.id === 'action' && (row.status === 'Pending' || row.status === 'Failed') ? (
-                                                            <>
-                                                                <button onClick={() => handlePay(row)}>Pay</button>
-                                                                <button onClick={() => handleReject(row)}>Reject</button>
-                                                            </>
+                                                    <TableCell key={column.id} align="center" style={{ backgroundColor: isStatusColumn ? getStatusColor(row.status) : 'inherit' }}>
+                                                        {isStatusColumn ? (
+                                                            <Typography variant="h6" style={{ color: 'white' }}>
+                                                                {value}
+                                                            </Typography>
                                                         ) : (
-                                                            column.format && typeof value === 'number'
-                                                                ? column.format(value)
-                                                                : value
+                                                            column.id === 'action' && (row.status === 'Pending' || row.status === 'Failed') ? (
+                                                                <>
+                                                                    <Button variant="success" onClick={() => handlePay(row)} style={{ marginRight: '10px' }}>
+                                                                        Pay
+                                                                    </Button>
+                                                                    <Button variant="danger" onClick={() => handleReject(row)} className="ml-2">
+                                                                        Reject
+                                                                    </Button>
+                                                                </>
+                                                            ) : (
+                                                                column.format && typeof value === 'number'
+                                                                    ? column.format(value)
+                                                                    : value
+                                                            )
                                                         )}
                                                     </TableCell>
                                                 );
                                             })}
                                             {isMobile && <TableCell align="center" style={{ minWidth: 100 }}>
-                                                <button onClick={() => handleViewDetails(row)}>View Details</button>
+                                                <Button className="bg-secondary" onClick={() => handleViewDetails(row)}>
+                                                    View
+                                                </Button>
                                             </TableCell>}
                                         </TableRow>
                                     ))}
@@ -238,4 +251,17 @@ export default function PaymentList() {
             </Grid>
         </Grid>
     );
+}
+
+function getStatusColor(status) {
+    switch (status) {
+        case 'Pending':
+            return '#ffecb3';
+        case 'Failed':
+            return '#ef9a9a';
+        case 'Completed':
+            return '#e8f5e9';
+        default:
+            return 'inherit';
+    }
 }
