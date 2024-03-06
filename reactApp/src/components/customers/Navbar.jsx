@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
-import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -94,12 +94,16 @@ const DrawerContent = () => {
 
   const menuItems = [
     { text: "Payments", icon: <AttachMoneyIcon />, route: "customer" },
-    { text: "Instant Payments", icon: <MoneyIcon />, route: "customer/instantpayment" },
+    {
+      text: "Instant Payments",
+      icon: <MoneyIcon />,
+      route: "customer/instantpayment",
+    },
     { text: "QR Scan", icon: <QrCode2Icon />, route: "customer/qrscan" },
   ];
 
   const isActiveRoute = (route) => {
-    const formattedRoute = route.startsWith('/') ? route.substring(1) : route;
+    const formattedRoute = route.startsWith("/") ? route.substring(1) : route;
     return location.pathname === `/${formattedRoute}`;
   };
 
@@ -117,7 +121,9 @@ const DrawerContent = () => {
               minHeight: 48,
               justifyContent: (theme) => (open ? "initial" : "center"),
               px: 2.5,
-              backgroundColor: isActiveRoute(item.route) ? "#e0e0e0" : "transparent",
+              backgroundColor: isActiveRoute(item.route)
+                ? "#e0e0e0"
+                : "transparent",
             }}
           >
             <ListItemIcon
@@ -169,11 +175,20 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            LOGO
+          </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        PaperProps={{
+          sx: {},
+        }}
+      >
         <DrawerHeader>
-          <AccessibilityIcon style={{ fontSize: '2em' }} />
+          <AccessibilityIcon style={{ fontSize: "2em" }} />
           <Typography variant="h6" noWrap component="div">
             Customer Portal
           </Typography>

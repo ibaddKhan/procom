@@ -17,9 +17,8 @@ const bull = (
 export default function PaymentCard({ color, data, recordsVal, buttonValColor }) {
     return (
         <Box sx={{ minWidth: 210 }}>
-            <Card style={{ backgroundColor: color }} variant="none">
-                <React.Fragment>
-                    <CardContent>
+            <Card sx={{ bgcolor: color, p:2}} variant="none">
+                    <CardContent sx={{display:'flex',flexDirection:'column',gap:'20px'}}>
                         <Typography variant="h6" component="div">
                             {data}
                         </Typography>
@@ -28,13 +27,12 @@ export default function PaymentCard({ color, data, recordsVal, buttonValColor })
                             style={{ color: buttonValColor }}
                             variant="outlined"
                             size="small"
-                            sx={{ borderRadius: '20px', padding: '1px', borderColor: buttonValColor }}
+                            sx={{ borderRadius: '20px', padding: '1px', borderColor: buttonValColor,maxWidth:'50px' }}
                         >
                             {recordsVal}
                         </Button>
 
                     </CardContent>
-                </React.Fragment>
             </Card>
         </Box>
     );
