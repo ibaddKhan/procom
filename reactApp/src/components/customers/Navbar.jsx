@@ -203,7 +203,6 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <DrawerContent />
-        <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

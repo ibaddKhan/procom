@@ -12,8 +12,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-
-const defaultTheme = createTheme();
+import { Card } from "@mui/material";
 
 export default function SignUp() {
   const handleSubmit = (event) => {
@@ -26,12 +25,12 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <Container component="main" sx={{ maxWidth: "550px" }} maxWidth={false}>
+        <Card sx={{ p: 4, mt: 8 }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            // marginTop: 2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -50,14 +49,14 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="username"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="username"
+                  label="User Name"
                   autoFocus
                 />
               </Grid>
@@ -65,9 +64,19 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
+                  id="accountNumber"
+                  label="Account Number"
+                  name="accountNumber"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="PhoneNumber"
+                  label="Phone Number"
+                  name="PhoneNumber"
                   autoComplete="family-name"
                 />
               </Grid>
@@ -92,7 +101,6 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-             
             </Grid>
             <Button
               type="submit"
@@ -114,7 +122,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
+    </Card>
       </Container>
-    </ThemeProvider>
   );
 }
