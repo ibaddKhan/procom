@@ -19,6 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import { Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -175,13 +176,11 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <AccessibilityIcon style={{ fontSize: '2em' }} />
           <Typography variant="h6" noWrap component="div">
             Customer Portal
           </Typography>
