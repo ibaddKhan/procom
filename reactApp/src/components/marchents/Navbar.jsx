@@ -108,6 +108,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  // Navigate Ma
   const handleNavigate = (text) => {
     
     if (text === 'Dashboard') {

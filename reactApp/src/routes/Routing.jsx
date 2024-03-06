@@ -24,7 +24,7 @@ const Routing = () => {
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
 
-        <Route path="merchent" element={<Marchent />}>
+        <Route path="merchant" element={<Marchent />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
           <Route path="payments" element={<PaymentM />} />
