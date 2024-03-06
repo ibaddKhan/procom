@@ -5,6 +5,7 @@ const Customer = () => {
   return (
     <>
       <MiniDrawer />
+      
     </>
   );
 };
