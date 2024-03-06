@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../screens/Auth/Login/Login";
 import Register from "../screens/Auth/Register/Register";
 import Marchent from "../screens/marchent/Marchent";
 import Customer from "../screens/customer/Customer";
@@ -11,6 +10,8 @@ import Qrscan from "../screens/customer/Qrscan/Qrscan";
 import Dashboard from "../screens/marchent/dashboard/Dashboard";
 import Customers from "../screens/marchent/customers/Customers";
 import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
+import Login from "../screens/Auth/Login/Login";
+
 const Routing = () => {
   return (
     <BrowserRouter>

@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import mylogo from "../../../assests/mylogo.png";
+import mylogo from "../../../assests/logo2.avif";
 function Copyright(props) {
   return (
     <Typography
@@ -59,7 +59,7 @@ export default function SignIn() {
         >
           <Avatar
             src={mylogo}
-            sx={{ m: 1, bgcolor: "secondary.main" }}
+            sx={{ m: 1, bgcolor: "secondary.main", width:'100px'}}
           ></Avatar>
           <Typography component="h1" variant="h5">
             Sign in
