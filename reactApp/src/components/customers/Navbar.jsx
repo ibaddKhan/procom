@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -95,13 +95,13 @@ const DrawerContent = () => {
     console.log(`Clicked on ${text}`);
     switch (text) {
       case "Payments":
-        navigate("/Payment");
+        navigate("/customer");
         break;
       case "Instant Payments":
-        navigate("/instantPayment");
+        navigate("instantpayment");
         break;
       case "QR Scan":
-        navigate("/qrScanPayment");
+        navigate("qrscan");
         break;
       default:
         break;
@@ -116,20 +116,29 @@ const DrawerContent = () => {
             onClick={() => handleClick(text)}
             sx={{
               minHeight: 48,
-              justifyContent: theme => open ? "initial" : "center",
+              justifyContent: (theme) => (open ? "initial" : "center"),
               px: 2.5,
             }}
           >
             <ListItemIcon
               sx={{
                 minWidth: 0,
-                mr: theme => open ? 3 : "auto",
+                mr: (theme) => (open ? 3 : "auto"),
                 justifyContent: "center",
               }}
             >
-              {index === 0 ? <AttachMoneyIcon /> : index === 2 ? <QrCode2Icon /> : <MoneyIcon />}
+              {index === 0 ? (
+                <AttachMoneyIcon />
+              ) : index === 2 ? (
+                <QrCode2Icon />
+              ) : (
+                <MoneyIcon />
+              )}
             </ListItemIcon>
-            <ListItemText primary={text} sx={{ opacity: theme => open ? 1 : 0 }} />
+            <ListItemText
+              primary={text}
+              sx={{ opacity: (theme) => (open ? 1 : 0) }}
+            />
           </ListItemButton>
         </ListItem>
       ))}
@@ -191,7 +200,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        Dashboard
+        <Outlet />
       </Box>
     </Box>
   );
