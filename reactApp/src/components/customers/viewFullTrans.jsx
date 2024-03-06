@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import { useNavigate } from 'react-router-dom';
 
 const ViewFullTrans = () => {
-    let nav = useNavigate()
+    let nav = useNavigate();
     const [selectedRow, setSelectedRow] = useState(null);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const ViewFullTrans = () => {
 
     const handlePay = () => {
         console.log('Pay button clicked for:', selectedRow);
-        nav("/customer/Qrscan")
+        nav("/customer/Qrscan");
     };
 
     const handleReject = () => {
@@ -40,34 +40,12 @@ const ViewFullTrans = () => {
                         <TableContainer>
                             <Table>
                                 <TableBody>
-                                    <TableRow>
-                                        <TableCell variant="head">Account No:</TableCell>
-                                        <TableCell>{selectedRow.accountNo}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Merchant No:</TableCell>
-                                        <TableCell>{selectedRow.merchantNo}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Status:</TableCell>
-                                        <TableCell>{selectedRow.status}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Time:</TableCell>
-                                        <TableCell>{selectedRow.time}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Date:</TableCell>
-                                        <TableCell>{selectedRow.date}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Description:</TableCell>
-                                        <TableCell>{selectedRow.description}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell variant="head">Amount:</TableCell>
-                                        <TableCell>{selectedRow.amount}</TableCell>
-                                    </TableRow>
+                                    {Object.entries(selectedRow).map(([key, value]) => (
+                                        <TableRow key={key}>
+                                            <TableCell variant="head">{key.replace(/([A-Z])/g, ' $1').trim() + ':'}</TableCell>
+                                            <TableCell style={{ backgroundColor: getStatusColor(key, value) }}>{value}</TableCell>
+                                        </TableRow>
+                                    ))}
                                 </TableBody>
                             </Table>
                             <Button variant="contained" onClick={handlePay} style={{ backgroundColor: '#4caf50', marginRight: '10px', marginTop: '10px' }}>
@@ -86,6 +64,22 @@ const ViewFullTrans = () => {
             </Card>
         </>
     );
+};
+
+const getStatusColor = (key, value) => {
+    if (key === 'status') {
+        switch (value) {
+            case 'Pending':
+                return '#ffecb3';
+            case 'Failed':
+                return '#ef9a9a';
+            case 'Completed':
+                return '#e8f5e9';
+            default:
+                return 'inherit';
+        }
+    }
+    return 'inherit';
 };
 
 export default ViewFullTrans;
