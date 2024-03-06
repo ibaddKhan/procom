@@ -4,17 +4,23 @@ import PaymentCard from '../../../components/customers/paymentCard'
 const Payment = () => {
   return (
     <>
-      <div>Payment</div>
-      <div className="d-flex flex-row mb-3">
+      <h1 className='font-weight-bold'>Payment</h1>
+      <div className="d-flex flex-wrap mb-3">
         <div className="p-2">
-          <PaymentCard color="#90caf9" />
+          <PaymentCard buttonValColor="#42a5f5
+" recordsVal="199" data="Total Pending Records" color="#e0f7fa" />
         </div>
         <div className="p-2 ">
-          <PaymentCard color="#80cbc4
+          <PaymentCard buttonValColor="#009688
+" recordsVal="199" data="Total Paid Records" color="#e0f2f1
+
 " />
         </div>
         <div className="p-2">
-          <PaymentCard color="#f48fb1" />
+          <PaymentCard buttonValColor="#e57373
+
+" recordsVal="199" data="Total Rejected Records" color="#ffebee
+" />
         </div>
       </div>
     </>

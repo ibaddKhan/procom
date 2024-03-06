@@ -19,8 +19,8 @@ import ListItemText from "@mui/material/ListItemText";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
-import AccessibilityIcon from "@mui/icons-material/Accessibility";
-import { Outlet, useNavigate } from "react-router-dom";
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -89,36 +89,35 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const DrawerContent = () => {
-  const theme = useTheme();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleClick = (text) => {
-    console.log(`Clicked on ${text}`);
-    switch (text) {
-      case "Payments":
-        navigate("");
-        break;
-      case "Instant Payments":
-        navigate("instantpayment");
-        break;
-      case "QR Scan":
-        navigate("qrscan");
-        break;
-      default:
-        break;
-    }
+  const menuItems = [
+    { text: "Payments", icon: <AttachMoneyIcon />, route: "customer" },
+    { text: "Instant Payments", icon: <MoneyIcon />, route: "customer/instantpayment" },
+    { text: "QR Scan", icon: <QrCode2Icon />, route: "customer/qrscan" },
+  ];
+
+  const isActiveRoute = (route) => {
+    const formattedRoute = route.startsWith('/') ? route.substring(1) : route;
+    return location.pathname === `/${formattedRoute}`;
+  };
+
+  const handleClick = (route) => {
+    navigate(`/${route}`);
   };
 
   return (
     <List>
-      {["Payments", "Instant Payments", "QR Scan"].map((text, index) => (
-        <ListItem key={text} disablePadding sx={{ display: "block" }}>
+      {menuItems.map((item, index) => (
+        <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            onClick={() => handleClick(text)}
+            onClick={() => handleClick(item.route)}
             sx={{
               minHeight: 48,
               justifyContent: (theme) => (open ? "initial" : "center"),
               px: 2.5,
+              backgroundColor: isActiveRoute(item.route) ? "#e0e0e0" : "transparent",
             }}
           >
             <ListItemIcon
@@ -128,16 +127,10 @@ const DrawerContent = () => {
                 justifyContent: "center",
               }}
             >
-              {index === 0 ? (
-                <AttachMoneyIcon />
-              ) : index === 2 ? (
-                <QrCode2Icon />
-              ) : (
-                <MoneyIcon />
-              )}
+              {item.icon}
             </ListItemIcon>
             <ListItemText
-              primary={text}
+              primary={item.text}
               sx={{ opacity: (theme) => (open ? 1 : 0) }}
             />
           </ListItemButton>
@@ -176,14 +169,15 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            DASHBOARD
-          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography sx={{ marginLeft: "15px" }}>Menu</Typography>
+        <DrawerHeader>
+          <AccessibilityIcon style={{ fontSize: '2em' }} />
+          <Typography variant="h6" noWrap component="div">
+            Customer Portal
+          </Typography>
+
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -192,7 +186,6 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </DrawerHeader>
-
         <Divider />
         <DrawerContent />
         <Divider />
