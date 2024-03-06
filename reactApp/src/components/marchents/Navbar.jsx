@@ -111,6 +111,7 @@ export default function MiniDrawer() {
   // Navigate Ma
   const handleNavigate = (text) => {
     
+<<<<<<< HEAD
     if (text == 'Dashboard') {
       navigate('')
     }
@@ -122,6 +123,19 @@ export default function MiniDrawer() {
     }
     else if (text === 'Payments Request') {
       navigate('paymentrequest')
+=======
+    if (text === 'Dashboard') {
+      navigate('/merchant/dashboard')
+    }
+    else if (text === 'Payments') {
+      navigate('/merchant/payments')
+    }
+    else if (text === 'Customers') {
+      navigate('/merchant/customers')
+    }
+    else if (text === 'Payments Request') {
+      navigate('/merchant/paymentrequest')
+>>>>>>> 0826ce13e95818438a4a7666cbc015b823a57dbe
     }
   }
 
