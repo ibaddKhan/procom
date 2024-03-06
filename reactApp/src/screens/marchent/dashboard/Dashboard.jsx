@@ -1,23 +1,17 @@
-import React from 'react'
-import { Box, Typography } from '@mui/material'
-// import PieChart from '../../../components/marchents/PieCharts'
-
+import React from "react";
+import { Box, Typography } from "@mui/material";
+import PieChart from '../../../components/marchents/PieChart'
 
 const Dashboard = () => {
-
   return (
     <>
       <Box>
+        <Typography variant="h5"> Dashboard </Typography>
 
-        <Typography variant='h5'> Dashboard </Typography>
-
-{/* <PieChart/> */}
-
-
-
+        <PieChart/>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

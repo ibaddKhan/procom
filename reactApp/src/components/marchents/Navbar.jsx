@@ -111,17 +111,17 @@ export default function MiniDrawer() {
   // Navigate Ma
   const handleNavigate = (text) => {
     
-    if (text === 'Dashboard') {
-      navigate('/marchent/dashboard')
+    if (text == 'Dashboard') {
+      navigate('')
     }
-    else if (text === 'Payments') {
-      navigate('/marchent/payments')
+    else if (text == 'Payments') {
+      navigate('payments')
     }
     else if (text === 'Customers') {
-      navigate('/marchent/customers')
+      navigate('customers')
     }
     else if (text === 'Payments Request') {
-      navigate('/marchent/paymentrequest')
+      navigate('paymentrequest')
     }
   }
 
@@ -170,6 +170,7 @@ export default function MiniDrawer() {
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
                   }}
+                  onClick={() => handleNavigate(text)}
                 >
                   <ListItemIcon
                     sx={{
@@ -190,7 +191,7 @@ export default function MiniDrawer() {
                     )}
                   </ListItemIcon>
 
-                  <ListItemText onClick={() => handleNavigate(text)} primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText  primary={text} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             )
