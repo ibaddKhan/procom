@@ -72,10 +72,10 @@ export default function TableComponent() {
   };
 
   return (
-    <Grid container >
+    <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Card sx={{ width: "100%",overflow:'auto' }}>
-          <TableContainer >
+        <Card sx={{ width: "auto", overflow: "auto", margin: "auto" }}>
+          <TableContainer>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
