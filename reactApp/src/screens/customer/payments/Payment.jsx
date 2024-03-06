@@ -25,7 +25,7 @@ const Payment = () => {
 " />
         </div>
       </div>
-      <TableComponent />
+      <PaymentList />
     </>
   )
 }
