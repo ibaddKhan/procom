@@ -93,11 +93,11 @@ const DrawerContent = () => {
   const location = useLocation();
 
   const menuItems = [
-    { text: "Payments", icon: <AttachMoneyIcon />, route: "customer" },
+    { text: "Payments", icon: <AttachMoneyIcon />, route: "" },
     {
       text: "Instant Payments",
       icon: <MoneyIcon />,
-      route: "customer/instantpayment",
+      route: "instantpayment",
     },
 
   ];
