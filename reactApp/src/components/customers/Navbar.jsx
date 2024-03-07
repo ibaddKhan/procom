@@ -122,8 +122,11 @@ const DrawerContent = () => {
               justifyContent: (theme) => (open ? "initial" : "center"),
               px: 2.5,
               backgroundColor: isActiveRoute(item.route)
-                ? "#e0e0e0"
+                ? "#90caf9"
                 : "transparent",
+              color: isActiveRoute(item.route)
+                ? "#ffff"
+                : "black",
             }}
           >
             <ListItemIcon
