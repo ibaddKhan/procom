@@ -1,17 +1,25 @@
-import { Box, Typography } from '@mui/material'
 import React from 'react'
+import { Box, Button, Typography } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add';
 import PaymentCard from '../../../components/marchents/PaymentCard'
 import TableHead from '../../../components/marchents/paymentTable/TableHead'
 import TableBody from '../../../components/marchents/paymentTable/TableBody'
+import { useNavigate } from 'react-router';
 
 
 const Payment = () => {
+
+  // UseNavigate
+  const navigate = useNavigate();
 
 
   return (
     <>
       <Box>
-        <Typography variant='h5' sx={{ marginBottom: "50px" }}> Payments </Typography>
+        <Box sx={{ marginBottom: "50px", display: 'flex', justifyContent: 'space-between' }}>
+          <Typography variant='h5'> Payments </Typography>
+          <Button variant="contained" onClick={() => navigate('/merchant/paymentrequest')} > <AddIcon fontSize='small' /> Payment Request </Button>
+        </Box>
 
         <Box>
 
