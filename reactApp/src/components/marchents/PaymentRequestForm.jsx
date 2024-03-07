@@ -48,7 +48,7 @@ export default function PaymentRequestForm() {
       await Swal.fire({
         position: "center",
         icon: "success",
-        title: "Success",
+        title: "Request Generated",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -57,7 +57,7 @@ export default function PaymentRequestForm() {
   const buttonStyle = {
     width: "100%",
   };
-  console.log(formik.values.bank);
+  // console.log(formik.values.bank);
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: "900px", margin: "auto" }}>
@@ -189,7 +189,6 @@ export default function PaymentRequestForm() {
                 // value={formik.values.bank}
                 onChange={(e, value) => {
                   formik.values.bank = value;
-                  console.log(value);
                 }}
                 error={formik.touched.bank && Boolean(formik.errors.bank)}
                 options={["bank Alhabib"]}
@@ -242,6 +241,7 @@ export default function PaymentRequestForm() {
               </Grid> */}
               <Grid container justifyContent="center">
                 <Button
+                  type="submit"
                   style={buttonStyle}
                   variant="contained"
                   endIcon={<SendIcon />}
