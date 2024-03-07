@@ -24,7 +24,7 @@ const validationSchema = yup.object({
   paymentPurpose: yup.string().required('Payment purpose is required'),
 });
 
-export default function InstantPaymentForm() {
+export default function PaymentRequestForm() {
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -43,13 +43,20 @@ export default function InstantPaymentForm() {
       await Swal.fire({
         position: "center",
         icon: "success",
-        title: "Success",
+        title: "Request Generated",
         showConfirmButton: false,
         timer: 1500
       });
     },
   });
+<<<<<<< HEAD:reactApp/src/components/marchents/paymentForm.jsx
 
+=======
+  const buttonStyle = {
+    width: "100%",
+  };
+  // console.log(formik.values.bank);
+>>>>>>> 585df975ba8509cd4425ce5ab530be160919f33a:reactApp/src/components/marchents/PaymentRequestForm.jsx
   return (
     <React.Fragment>
       <Typography variant="h3" className='font-weight-bold' gutterBottom>
@@ -139,6 +146,7 @@ export default function InstantPaymentForm() {
             />
           </Grid>
 
+<<<<<<< HEAD:reactApp/src/components/marchents/paymentForm.jsx
           <Grid item xs={12} sm={6}>
             <InputLabel id="bank-label">Select Bank</InputLabel>
             <Select
@@ -178,14 +186,73 @@ export default function InstantPaymentForm() {
           <Grid item xs={12}>
             <Grid container justifyContent="space-around">
               <Grid item>
+=======
+            <Grid item xs={12} sm={6}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                // value={formik.values.bank}
+                onChange={(e, value) => {
+                  formik.values.bank = value;
+                }}
+                error={formik.touched.bank && Boolean(formik.errors.bank)}
+                options={["bank Alhabib"]}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Bank Name"
+                    helperText={formik.touched.bank && formik.errors.bank}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="paymentPurpose"
+                name="paymentPurpose"
+                label="Payment Purpose"
+                fullWidth
+                multiline
+                rows={4}
+                variant="outlined"
+                style={{
+                  marginTop: "8px",
+                }}
+                value={formik.values.paymentPurpose}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.paymentPurpose &&
+                  Boolean(formik.errors.paymentPurpose)
+                }
+                helperText={
+                  formik.touched.paymentPurpose && formik.errors.paymentPurpose
+                }
+              />
+            </Grid>
+            <Grid item xs={12}>
+              {/* <Grid item>
+>>>>>>> 585df975ba8509cd4425ce5ab530be160919f33a:reactApp/src/components/marchents/PaymentRequestForm.jsx
                 <FormControlLabel
                   control={<Checkbox color="secondary" name="saveAddress" checked={formik.values.saveAddress} onChange={formik.handleChange} />}
                   label="Use this address for payment details"
                 />
+<<<<<<< HEAD:reactApp/src/components/marchents/paymentForm.jsx
               </Grid>
               <Grid item>
                 <Button className="btn btn-primary" variant="contained" type="submit">
                   Pay
+=======
+              </Grid> */}
+              <Grid container justifyContent="center">
+                <Button
+                  type="submit"
+                  style={buttonStyle}
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                >
+                  Request
+>>>>>>> 585df975ba8509cd4425ce5ab530be160919f33a:reactApp/src/components/marchents/PaymentRequestForm.jsx
                 </Button>
               </Grid>
             </Grid>

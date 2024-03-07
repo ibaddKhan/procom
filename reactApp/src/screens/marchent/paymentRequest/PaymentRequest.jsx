@@ -1,8 +1,8 @@
 import React from "react";
-import InstantPaymentForm from "../../../components/marchents/paymentForm";
+import PaymentRequestForm from "../../../components/marchents/PaymentRequestForm";
 
 const PaymentRequest = () => {
-  return <InstantPaymentForm />;
+  return <PaymentRequestForm />;
 };
 
 export default PaymentRequest;
