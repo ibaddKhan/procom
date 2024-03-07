@@ -178,7 +178,7 @@ export default function PaymentList() {
                                 <TableRow>
                                     {columns.map((column) => {
                                         if (isMobile && ['time', 'date', 'action', 'accountNo', 'description'].includes(column.id)) {
-                                            return null; // Hide specified columns on mobile
+                                            return null;
                                         }
                                         return (
                                             <TableCell key={column.id} align="center" style={{ minWidth: column.minWidth }}>
@@ -204,7 +204,7 @@ export default function PaymentList() {
                                         >
                                             {columns.map((column) => {
                                                 if (isMobile && ['time', 'date', 'action', 'accountNo', 'description'].includes(column.id)) {
-                                                    return null; // Hide specified columns on mobile
+                                                    return null;
                                                 }
 
                                                 const value = row[column.id];

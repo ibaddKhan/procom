@@ -1,8 +1,9 @@
 import React from 'react'
+import InstantPaymentForm from '../../../components/customers/paymentForm'
 
 const InstantPayment = () => {
   return (
-    <div>InstantPayment</div>
+    <InstantPaymentForm />
   )
 }
 
