@@ -185,6 +185,7 @@ export default function InstantPaymentForm() {
                   style={buttonStyle}
                   variant="contained"
                   endIcon={<SendIcon />}
+                  type='submit'
                 >
                   Pay
                 </Button>
