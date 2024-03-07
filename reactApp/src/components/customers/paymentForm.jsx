@@ -12,7 +12,8 @@ import InputLabel from '@mui/material/InputLabel';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import { Button } from 'react-bootstrap';
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
 
 const validationSchema = yup.object({
     username: yup.string().required('Username is required'),
@@ -49,7 +50,9 @@ export default function InstantPaymentForm() {
             });
         },
     });
-
+    const buttonStyle = {
+        width: '50%',
+    };
     return (
         <React.Fragment>
             <Typography variant="h3" className='font-weight-bold' gutterBottom>
@@ -176,18 +179,16 @@ export default function InstantPaymentForm() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Grid container justifyContent="space-around">
-                            <Grid item>
-                                <FormControlLabel
-                                    control={<Checkbox color="secondary" name="saveAddress" checked={formik.values.saveAddress} onChange={formik.handleChange} />}
-                                    label="Use this address for payment details"
-                                />
-                            </Grid>
-                            <Grid item>
-                                <Button className="btn btn-primary" variant="contained" type="submit">
-                                    Pay
-                                </Button>
-                            </Grid>
+                        <Grid item>
+                            <FormControlLabel
+                                control={<Checkbox color="secondary" name="saveAddress" checked={formik.values.saveAddress} onChange={formik.handleChange} />}
+                                label="Use this address for payment details"
+                            />
+                        </Grid>
+                        <Grid container justifyContent="center">
+                            <Button style={buttonStyle} variant="contained" endIcon={<SendIcon />}>
+                                Pay
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>
