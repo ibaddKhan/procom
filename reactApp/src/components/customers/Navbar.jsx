@@ -94,11 +94,11 @@ const DrawerContent = () => {
   const location = useLocation();
 
   const menuItems = [
-    { text: "Payments", icon: <AttachMoneyIcon />, route: "" },
+    { text: "Payments", icon: <AttachMoneyIcon />, route: "customer" },
     {
       text: "Instant Payments",
       icon: <MoneyIcon />,
-      route: "instantpayment",
+      route: "customer/instantpayment",
     },
   ];
 
@@ -181,21 +181,9 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography variant="h6" noWrap component="div">
-              LOGO
-            </Typography>
-            <Button variant="contained" onClick={() => logout()}>
-              Logout
-            </Button>
-          </div>
+          <Typography variant="h6" noWrap component="div">
+            LOGO
+          </Typography>
         </Toolbar>
       </AppBar>
 
