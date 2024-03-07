@@ -128,7 +128,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open}  >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -197,7 +197,6 @@ export default function MiniDrawer() {
             )
           )}
         </List>
-        <Divider />
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

@@ -12,20 +12,29 @@ import Dashboard from "../screens/marchent/dashboard/Dashboard";
 <<<<<<< HEAD
 import Customers from "../screens/marchent/customers/Customers";
 import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
+<<<<<<< HEAD
 import Login from "../screens/Auth/Login/Login";
 
 =======
 import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
 >>>>>>> 8d659013c409043f0339370a3a808e8c5e0fcabc
+=======
+import Error404 from "../404";
+import ViewFullTrans from "../components/customers/viewFullTrans";
+>>>>>>> c7c77a137791354a4352073160fddc894dfdc743
 const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<>Home</>} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="customer" element={<Customer />}>
+<<<<<<< HEAD
           <Route path="payment" element={<Payment />} />
+=======
+          <Route path="" element={<Payment />} />
+          <Route path="transactionDetails" element={<ViewFullTrans />} />
+>>>>>>> c7c77a137791354a4352073160fddc894dfdc743
           <Route path="instantpayment" element={<InstantPayment />} />
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
@@ -43,6 +52,7 @@ const Routing = () => {
 >>>>>>> 8d659013c409043f0339370a3a808e8c5e0fcabc
           <Route path="paymentrequest" element={<PaymentRequest />} />
         </Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   );
