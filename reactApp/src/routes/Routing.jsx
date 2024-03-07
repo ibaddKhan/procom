@@ -20,6 +20,8 @@ const Routing = () => {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+
+        {/* //Routing for Customer Dashboard */}
         <Route path="customer" element={<Customer />}>
           <Route path="payment" element={<Payment />} />
           <Route path="transactionDetails" element={<ViewFullTrans />} />
@@ -28,6 +30,7 @@ const Routing = () => {
           <Route index element={<Payment />} />
         </Route>
 
+        {/* //Routing for Merchent Dashboard */}
         <Route path="merchant" element={<Marchent />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
