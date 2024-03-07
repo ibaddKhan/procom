@@ -4,6 +4,7 @@ import PaymentList from "../../../components/customers/paymentList";
 import TableComponent from "../../../components/Table";
 
 const Payment = () => {
+console.log(localStorage.getItem("token"));
   return (
     <>
       <h1 className="font-weight-bold">Payment</h1>

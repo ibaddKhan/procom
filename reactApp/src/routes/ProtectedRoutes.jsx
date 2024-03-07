@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProtectedRoutes = () => {
-  return (
-    <div>ProtectedRoautes</div>
-  )
-}
+const ProtectedRoutes = ({ Component }) => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [isUser, setisUser] = useState(false);
 
-export default ProtectedRoutes
+  useEffect(() => {
+    if (token) {
+      setisUser(true);
+    } else {
+      setisUser(false);
+      navigate("/login");
+    }
+  }, []);
+  return <>{isUser ? Component : " loading..."}</>;
+};
+
+export default ProtectedRoutes;

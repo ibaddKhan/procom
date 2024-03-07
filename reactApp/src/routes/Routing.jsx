@@ -13,6 +13,7 @@ import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
 import Login from "../screens/Auth/Login/Login";
 import Error404 from "../404";
 import ViewFullTrans from "../components/customers/viewFullTrans";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const Routing = () => {
   return (
@@ -22,7 +23,7 @@ const Routing = () => {
         <Route path="register" element={<Register />} />
 
         {/* //Routing for Customer Dashboard */}
-        <Route path="customer" element={<Customer />}>
+        <Route path="/" element={<ProtectedRoutes Component={<Customer />} />}>
           <Route path="payment" element={<Payment />} />
           <Route path="transactionDetails" element={<ViewFullTrans />} />
           <Route path="instantpayment" element={<InstantPayment />} />
@@ -31,7 +32,10 @@ const Routing = () => {
         </Route>
 
         {/* //Routing for Merchent Dashboard */}
-        <Route path="merchant" element={<Marchent />}>
+        <Route
+          path="merchant"
+          element={<ProtectedRoutes Component={<Marchent />} />}
+        >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
           <Route path="payments" element={<PaymentM />} />

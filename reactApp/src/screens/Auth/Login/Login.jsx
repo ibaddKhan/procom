@@ -8,24 +8,60 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card } from "@mui/material";
-
+import axios from "axios";
+import { useFormik } from "formik";
+import * as yup from "yup";
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const navigate = useNavigate();
+  const validationSchema = yup.object({
+    userName: yup.string().required("UserName is required"),
+    password: yup.string().min(6).required("Payment purpose is required"),
+  });
+  const formik = useFormik({
+    initialValues: {
+      userName: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      try {
+        await axios
+          .post("https://enthusiastic-housecoat-bull.cyclic.app/users/login", {
+            userName: values.userName,
+            password: values.password,
+          })
+          .then(async (resa) => {
+            console.log(resa);
+            // // await axios.get("https://enthusiastic-housecoat-bull.cyclic.app/users").then((res) => {
+            // //   res?.data?.find((user) => {
+            // //     if (values.userName == user?.userName) {
+            // //       if (user?.type == "customer") {
+            // //         navigate("/");
+            // //       } else {
+            // //         navigate("/merchant");
+            // //       }
+            // //     }
+            // //   });
+            // // });
+            // localStorage.setItem("token", resa?.data?.token);
+            // console.log(resa?.data?.token);
+          })
+          .catch((e) => {
+            alert(e);
+          });
+      } catch (error) {
+        alert(error.message);
+      }
+    },
+  });
 
   return (
-    <Box  >
-      <Container component="main" sx={{ maxWidth:'550px'  }} maxWidth={false}>
+    <Box>
+      <Container component="main" sx={{ maxWidth: "550px" }} maxWidth={false}>
         <Card sx={{ p: 4, mt: 8 }}>
           <CssBaseline />
           <Box
@@ -44,7 +80,10 @@ export default function SignIn() {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit}
+              onSubmit={(e) => {
+                e.preventDefault();
+                formik.handleSubmit();
+              }}
               noValidate
               sx={{ mt: 4 }}
             >
@@ -52,12 +91,17 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="userName"
+                label="user Name"
+                name="userName"
+                autoComplete="userName"
                 autoFocus
-s              />
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.userName && Boolean(formik.errors.userName)
+                }
+                helperText={formik.touched.userName && formik.errors.userName}
+              />
               <TextField
                 margin="normal"
                 required
@@ -67,6 +111,11 @@ s              />
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
               />
               {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -80,14 +129,16 @@ s              />
               >
                 Sign In
               </Button>
-              <Box sx={{ display: "flex", justifyContent: "space-between",mb:3 }}>
+              <Box
+                sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}
+              >
                 {/* <Grid item xs>
                   <Link href="#" variant="body2">
                     Forgot password?
                   </Link>
                 </Grid> */}
                 <Box></Box>
-                <Box item >
+                <Box item>
                   <Link
                     to="/register"
                     variant="body2"

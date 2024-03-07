@@ -23,6 +23,7 @@ import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -95,10 +96,8 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-
   // UseNavigate
   const navigate = useNavigate();
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -110,25 +109,24 @@ export default function MiniDrawer() {
 
   // Navigate Ma
   const handleNavigate = (text) => {
-    
-    if (text == 'Dashboard') {
-      navigate('dashboard')
+    if (text == "Dashboard") {
+      navigate("dashboard");
+    } else if (text == "Payments") {
+      navigate("payments");
+    } else if (text === "Customers") {
+      navigate("customers");
+    } else if (text === "Payments Request") {
+      navigate("paymentrequest");
     }
-    else if (text == 'Payments') {
-      navigate('payments')
-    }
-    else if (text === 'Customers') {
-      navigate('customers')
-    }
-    else if (text === 'Payments Request') {
-      navigate('paymentrequest')
-    }
+  };
+  function logout() {
+    localStorage.clear();
+    navigate("/login");
   }
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}  >
+      <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -142,9 +140,21 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            LOGO
-          </Typography>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="h6" noWrap component="div">
+              LOGO
+            </Typography>
+            <Button variant="contained" onClick={() => logout()}>
+              Logout
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -191,7 +201,7 @@ export default function MiniDrawer() {
                     )}
                   </ListItemIcon>
 
-                  <ListItemText  primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             )

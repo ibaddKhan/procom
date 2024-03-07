@@ -21,6 +21,7 @@ import MoneyIcon from "@mui/icons-material/Money";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -99,7 +100,6 @@ const DrawerContent = () => {
       icon: <MoneyIcon />,
       route: "instantpayment",
     },
-
   ];
 
   const isActiveRoute = (route) => {
@@ -124,9 +124,7 @@ const DrawerContent = () => {
               backgroundColor: isActiveRoute(item.route)
                 ? "#90caf9"
                 : "transparent",
-              color: isActiveRoute(item.route)
-                ? "#ffff"
-                : "black",
+              color: isActiveRoute(item.route) ? "#ffff" : "black",
             }}
           >
             <ListItemIcon
@@ -150,6 +148,11 @@ const DrawerContent = () => {
 };
 
 export default function MiniDrawer() {
+  const navigate = useNavigate();
+  function logout() {
+    localStorage.clear();
+    navigate("/login");
+  }
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -178,11 +181,24 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            LOGO
-          </Typography>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="h6" noWrap component="div">
+              LOGO
+            </Typography>
+            <Button variant="contained" onClick={() => logout()}>
+              Logout
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
+
       <Drawer
         variant="permanent"
         open={open}
