@@ -72,7 +72,7 @@ export default function InstantPaymentForm() {
             textAlign: "center",
           }}
         >
-          Payment Details
+          Payment Request for Customer
         </Typography>
         <form
           onSubmit={(e) => {
@@ -92,7 +92,7 @@ export default function InstantPaymentForm() {
                 required
                 id="username"
                 name="username"
-                label="Username"
+                label="Customer Name"
                 fullWidth
                 variant="outlined"
                 value={formik.values.username}
