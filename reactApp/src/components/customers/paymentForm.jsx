@@ -49,14 +49,24 @@ export default function InstantPaymentForm() {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       console.log("Form submitted with values:", values);
+      try {
+        await Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } catch (error) {
+        await Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "An Error occurred",
+          showConfirmButton: false,
+          timer: 1500,
+        });
 
-      await Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Success",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      }
     },
   });
   const buttonStyle = {
@@ -67,7 +77,7 @@ export default function InstantPaymentForm() {
     <React.Fragment>
       <Card sx={{ maxWidth: '900px', margin: 'auto' }}>
         <Typography variant="h4" className="font-weight-bold" gutterBottom sx={{ background: '#1976D2', color: 'white', p: 2, textAlign: 'center' }}>
-          Payment Details
+          Pay Bills
         </Typography>
         <form
           onSubmit={(e) => {
@@ -187,7 +197,7 @@ export default function InstantPaymentForm() {
                   console.log(value);
                 }}
                 error={formik.touched.bank && Boolean(formik.errors.bank)}
-                options={["bank Alhabib"]}
+                options={["Bank Al Habib"]}
                 renderInput={(params) => (
                   <TextField
                     {...params}
