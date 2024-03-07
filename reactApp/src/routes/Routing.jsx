@@ -3,15 +3,20 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "../screens/Auth/Register/Register";
 import Marchent from "../screens/marchent/Marchent";
 import Customer from "../screens/customer/Customer";
+import Customers from "../screens/marchent/customers/Customers";
 import Payment from "../screens/customer/payments/Payment";
 import PaymentM from "../screens/marchent/payment/Payment";
 import InstantPayment from "../screens/customer/InstantPayment/InstantPayment";
 import Qrscan from "../screens/customer/Qrscan/Qrscan";
 import Dashboard from "../screens/marchent/dashboard/Dashboard";
+<<<<<<< HEAD
 import Customers from "../screens/marchent/customers/Customers";
 import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
 import Login from "../screens/Auth/Login/Login";
 
+=======
+import PaymentRequest from "../screens/marchent/paymentRequest/PaymentRequest";
+>>>>>>> 8d659013c409043f0339370a3a808e8c5e0fcabc
 const Routing = () => {
   return (
     <BrowserRouter>
@@ -24,11 +29,18 @@ const Routing = () => {
           <Route path="instantpayment" element={<InstantPayment />} />
           <Route path="qrscan" element={<Qrscan />} />
         </Route>
+<<<<<<< HEAD
 
         <Route path="merchant" element={<Marchent />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
           <Route path="payments" element={<PaymentM />} />
+=======
+        <Route path="marchent" element={<Marchent />}>
+          <Route path="payments" element={<PaymentM />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="" element={<Dashboard />} />
+>>>>>>> 8d659013c409043f0339370a3a808e8c5e0fcabc
           <Route path="paymentrequest" element={<PaymentRequest />} />
         </Route>
       </Routes>
