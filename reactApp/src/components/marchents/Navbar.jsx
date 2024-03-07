@@ -112,7 +112,7 @@ export default function MiniDrawer() {
   const handleNavigate = (text) => {
     
     if (text == 'Dashboard') {
-      navigate('')
+      navigate('dashboard')
     }
     else if (text == 'Payments') {
       navigate('payments')
