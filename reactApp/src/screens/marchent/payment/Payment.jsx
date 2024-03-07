@@ -11,6 +11,7 @@ const Payment = () => {
 
         <Box>
 
+          {/* Payment History Cards  */}
           <Box sx={{ display: 'flex', gap: '20px' }}>
 
             <PaymentCard title={"All Payments"} amount={"33,676"} records={"267"} borderCOlor={"#1976d2"} chipColor={"primary"} bgColor={"#ebf5ff"} />
