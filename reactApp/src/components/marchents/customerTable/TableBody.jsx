@@ -54,7 +54,7 @@ export default function BasicTable() {
               >
                 <TableCell> {data.name} </TableCell>
                 <TableCell>{data.email}</TableCell>
-                <TableCell>{data.phone} PKR </TableCell>
+                <TableCell>{data.phone} </TableCell>
                 <TableCell align="right">{data.registerDate}</TableCell>
               </TableRow>
             ))}
