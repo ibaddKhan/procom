@@ -77,7 +77,7 @@ export default function InstantPaymentForm() {
     <React.Fragment>
       <Card sx={{ maxWidth: '900px', margin: 'auto' }}>
         <Typography variant="h4" className="font-weight-bold" gutterBottom sx={{ background: '#1976D2', color: 'white', p: 2, textAlign: 'center' }}>
-          Payment Details
+          Pay Bills
         </Typography>
         <form
           onSubmit={(e) => {

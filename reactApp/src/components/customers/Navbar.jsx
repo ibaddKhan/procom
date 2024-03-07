@@ -99,7 +99,7 @@ const DrawerContent = () => {
       icon: <MoneyIcon />,
       route: "customer/instantpayment",
     },
-    { text: "QR Scan", icon: <QrCode2Icon />, route: "customer/qrscan" },
+
   ];
 
   const isActiveRoute = (route) => {

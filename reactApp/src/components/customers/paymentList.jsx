@@ -122,7 +122,6 @@ const rows = [
         time: "09:15 AM",
         date: "2024-03-03",
         amount: 99.99,
-        action: "View"
     },
     {
         accountNo: "12344321",
@@ -132,7 +131,15 @@ const rows = [
         time: "09:15 AM",
         date: "2024-03-03",
         amount: 99.99,
-        action: "View"
+    },
+    {
+        accountNo: "1122334455",
+        merchantNo: "M003",
+        status: "Failed",
+        description: "Payment to DEF Ltd",
+        time: "11:00 AM",
+        date: "2024-03-05",
+        amount: 75.25,
     }
 ];
 
@@ -218,7 +225,7 @@ export default function PaymentList() {
                                                             </Typography>
                                                         ) : (
                                                             column.id === 'action' && (row.status === 'Pending' || row.status === 'Failed') ? (
-                                                                <div style={{display:'flex'}}>
+                                                                <div style={{ display: 'flex' }}>
                                                                     <Button variant="success" onClick={() => handlePay(row)} style={{ marginRight: '10px' }}>
                                                                         Pay
                                                                     </Button>
