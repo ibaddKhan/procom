@@ -65,10 +65,10 @@ export default function InstantPaymentForm() {
   console.log(formik.values.bank);
   return (
     <React.Fragment>
-      <Card sx={{maxWidth:'900px',margin:'auto'}}>
-      <Typography variant="h4" className="font-weight-bold" gutterBottom sx={{background:'#1976D2',color:'white',p:2,textAlign:'center'}}>
-        Payment Details
-      </Typography>
+      <Card sx={{ maxWidth: '900px', margin: 'auto' }}>
+        <Typography variant="h4" className="font-weight-bold" gutterBottom sx={{ background: '#1976D2', color: 'white', p: 2, textAlign: 'center' }}>
+          Payment Details
+        </Typography>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -237,7 +237,7 @@ export default function InstantPaymentForm() {
               </Grid> */}
               <Grid container justifyContent="center">
                 <Button
-                
+
                   style={buttonStyle}
                   variant="contained"
                   endIcon={<SendIcon />}
