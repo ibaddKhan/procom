@@ -1,9 +1,13 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 import PaymentCard from '../../../components/marchents/PaymentCard'
+import TableHead from '../../../components/marchents/paymentTable/TableHead'
+import TableBody from '../../../components/marchents/paymentTable/TableBody'
 
 
 const Payment = () => {
+
+
   return (
     <>
       <Box>
@@ -12,13 +16,26 @@ const Payment = () => {
         <Box>
 
           {/* Payment History Cards  */}
-          <Box sx={{ display: 'flex', gap: '20px' }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
 
             <PaymentCard title={"All Payments"} amount={"33,676"} records={"267"} borderCOlor={"#1976d2"} chipColor={"primary"} bgColor={"#ebf5ff"} />
             <PaymentCard title={"Succeed"} amount={"33,676"} records={"267"} borderCOlor={"#2e7d32"} chipColor={"success"} bgColor={"#f2faf2"} />
             <PaymentCard title={"Pending"} amount={"3,676"} records={"67"} borderCOlor={"#d99902"} chipColor={"warning"} bgColor={"#faf8f5"} />
             <PaymentCard title={"Rejected"} amount={"1,676"} records={"26"} borderCOlor={"#d32f2f"} chipColor={"error"} bgColor={"#f7eded"} />
           </Box>
+
+
+          {/* Payment History Table */}
+          <Typography variant='h5' sx={{ marginY: "50px" }}> Payments History </Typography>
+
+
+          {/* --Table-- */}
+
+          {/* Table Head */}
+          <TableHead />
+
+          {/* Table Body */}
+          <TableBody />
 
         </Box>
 
