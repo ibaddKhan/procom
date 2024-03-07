@@ -141,7 +141,7 @@ export default function PaymentList() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery('(max-width:1030px)');
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -218,14 +218,14 @@ export default function PaymentList() {
                                                             </Typography>
                                                         ) : (
                                                             column.id === 'action' && (row.status === 'Pending' || row.status === 'Failed') ? (
-                                                                <>
+                                                                <div style={{display:'flex'}}>
                                                                     <Button variant="success" onClick={() => handlePay(row)} style={{ marginRight: '10px' }}>
                                                                         Pay
                                                                     </Button>
                                                                     <Button variant="danger" onClick={() => handleReject(row)} className="ml-2">
                                                                         Reject
                                                                     </Button>
-                                                                </>
+                                                                </div>
                                                             ) : (
                                                                 column.format && typeof value === 'number'
                                                                     ? column.format(value)
