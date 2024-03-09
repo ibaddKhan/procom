@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-
+import Swal from 'sweetalert2'
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -36,6 +36,13 @@ export default function SignIn() {
           })
           .then(async (resa) => {
             console.log(resa);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Logged In",
+              showConfirmButton: false,
+              timer: 1500
+            });
             // // await axios.get("https://enthusiastic-housecoat-bull.cyclic.app/users").then((res) => {
             // //   res?.data?.find((user) => {
             // //     if (values.userName == user?.userName) {
@@ -51,7 +58,13 @@ export default function SignIn() {
             // console.log(resa?.data?.token);
           })
           .catch((e) => {
-            alert(e);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Error Logging In",
+              showConfirmButton: false,
+              timer: 1500
+            });
           });
       } catch (error) {
         alert(error.message);
