@@ -43,31 +43,26 @@ export default function SignIn() {
               showConfirmButton: false,
               timer: 1500
             });
-            // // await axios.get("https://enthusiastic-housecoat-bull.cyclic.app/users").then((res) => {
-            // //   res?.data?.find((user) => {
-            // //     if (values.userName == user?.userName) {
-            // //       if (user?.type == "customer") {
-            // //         navigate("/");
-            // //       } else {
-            // //         navigate("/merchant");
-            // //       }
-            // //     }
-            // //   });
-            // // });
-            // localStorage.setItem("token", resa?.data?.token);
-            // console.log(resa?.data?.token);
           })
           .catch((e) => {
+            let errMsg = e.response.data.message
+            console.log(errMsg);
             Swal.fire({
               position: "center",
-              icon: "success",
-              title: "Error Logging In",
+              icon: "error",
+              title: errMsg,
               showConfirmButton: false,
               timer: 1500
             });
           });
       } catch (error) {
-        alert(error.message);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     },
   });
